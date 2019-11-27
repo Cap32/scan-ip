@@ -1,0 +1,47 @@
+{
+  "name": "scan-ip",
+  "version": "0.0.0",
+  "description": "scan ip over lan",
+  "scripts": {
+    "start": "jest --watch",
+    "test": "jest",
+    "watch": "tsc -w",
+    "build": "tsc",
+    "predocs:build": "rimraf docs",
+    "docs:build": "typedoc src --out docs --mode file --excludePrivate --excludeExternals --excludeNotExported --entryPoint Scan --readme ./README.md",
+    "docs:deploy": "git-directory-deploy --directory ./docs",
+    "docs": "run-s docs:*",
+    "example": "ts-node ./examples/example.ts",
+    "preversion": "run-s test build"
+  },
+  "files": [
+    "LICENSE.md",
+    "README.md",
+    "lib"
+  ],
+  "main": "lib",
+  "repository": "Cap32/scan-ip",
+  "author": "cap32",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/ms": "^0.7.31",
+    "@types/netmask": "^1.0.30",
+    "@types/node": "^12.12.11",
+    "@types/throttle-debounce": "^2.1.0",
+    "git-directory-deploy": "^1.5.1",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "ms": "^2.1.2",
+    "netmask": "^1.0.6",
+    "p-queue": "^6.2.1",
+    "throttle-debounce": "^2.1.0"
+  }
+}
