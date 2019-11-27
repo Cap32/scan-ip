@@ -20,6 +20,7 @@
     "lib"
   ],
   "main": "lib",
+  "types": "lib",
   "repository": "Cap32/scan-ip",
   "author": "cap32",
   "license": "MIT",
