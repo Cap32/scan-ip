@@ -1,6 +1,6 @@
 {
   "name": "@cap32/scan-ip",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "scan ip over lan",
   "scripts": {
     "start": "jest --watch",
