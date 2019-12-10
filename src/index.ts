@@ -19,6 +19,7 @@ export type TOptions = {
   concurrency?: number;
   port?: number | [number, number];
   timeout?: number;
+  maxNetMaskSize?: number;
   hosts?: string[];
   hostFilter?: (host: string) => boolean;
 };
@@ -28,6 +29,7 @@ const defaultOptions: TOptions = {
   concurrency: 200,
   port: [1, 65535],
   timeout: 200,
+  maxNetMaskSize: 256,
   hosts: [],
   hostFilter: () => true
 };
@@ -105,7 +107,7 @@ export class Scan extends EventEmitter {
   }
 
   private async _scanAll() {
-    const { maxScans, hostFilter } = this._opts;
+    const { maxScans, hostFilter, maxNetMaskSize } = this._opts;
     const { minPort, maxPort, portsAmount } = this._portRanges;
     let { hosts } = this._opts;
     let count = 0;
@@ -114,6 +116,7 @@ export class Scan extends EventEmitter {
       hosts = [];
       for (const cidr of getCIDRs()) {
         const block = new Netmask(cidr);
+        if (maxNetMaskSize > 0 && maxNetMaskSize < block.size) continue;
         block.forEach(host => hosts.push(host));
       }
     }

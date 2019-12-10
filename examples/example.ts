@@ -2,10 +2,10 @@ import { Scan, TReport } from "../src/index";
 
 (async () => {
   const scan = new Scan({
-    // port: 80
+    port: 80
     // hosts: ["127.0.0.1"]
     // hostFilter: host => host == "192.168.195.215"
-    maxScans: 1
+    // maxScans: 100
   });
   scan.on("connect", (host: string, port: string) => {
     console.log("* * *", `${host}:${port}`, "* * *");
